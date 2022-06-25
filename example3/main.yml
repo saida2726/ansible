@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+  - name: Update ntpd
+    include_tasks: "{{ ansible_os_family }}.yml"
