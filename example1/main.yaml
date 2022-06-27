@@ -1,0 +1,6 @@
+- hosts: web
+  vars:
+    key: value
+  tasks:
+  - debug: msg="Variable is set to {{ key }}"
+

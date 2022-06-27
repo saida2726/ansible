@@ -1,0 +1,6 @@
+[web]
+web1 ansible_host=167.71.245.0
+
+
+[db]
+db1 ansible_host=67.205.149.188
