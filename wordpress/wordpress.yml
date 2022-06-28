@@ -1,0 +1,9 @@
+# Disable SELinux
+
+# Download Wordpress from https://wordpress.org/latest.zip
+
+# Unarchive
+
+# Put at /var/www/html
+
+# Fix file permissions (owner: apache, group apache)

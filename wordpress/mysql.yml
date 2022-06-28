@@ -1,0 +1,26 @@
+- name: Install MySQL
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - mariadb
+    - mariadb-server
+
+- name: Start MySQL Server
+  systemd:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Check wordpress DB
+  shell: "mysql -e 'SHOW DATABASES;' | grep wordpress"
+  register: dbstatus
+  ignore_errors: yes
+
+- name: Create wordpress DB
+  shell: "mysql -e 'CREATE DATABASE wordpress;'"
+  when: dbstatus.stdout == ""
+
+- name: Create User
+  shell: "mysql -e \"GRANT ALL ON wordpress.* TO 'wpuser'@'%' IDENTIFIED BY 'mypassword'\";"
+  when: dbstatus.stdout == ""
