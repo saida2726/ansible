@@ -1,0 +1,17 @@
+- hosts: web
+  vars:
+    php_version: 71
+  handlers:
+  - name: Restart Apache
+    systemd:
+      name: httpd
+      state: restarted
+      enabled: yes
+  tasks:
+  - name: Include Apache
+    include: apache.yml
+
+  - name: Include PHP
+    include: php.yml
+
+  
