@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Islam Kambarov
+  description: A simple role which installs PHP 7.0/7.1/7.2/7.3
+  license: MIT
+  min_ansible_version: 2.4
+  galaxy_tags:
+    - php
+dependencies: []
+

@@ -1,0 +1,28 @@
+---
+- name: Install unzip
+  yum:
+    name: unzip
+    state: latest
+
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  unarchive:
+    src: https://wordpress.org/latest.zip
+    dest: /tmp/
+    remote_src: yes
+
+- name: Move WordPress files
+  shell: "mv /tmp/wordpress/* /var/www/html/"
+  args:
+    creates: /var/www/html/index.php
+
+- name: Copy wp-config.php file
+  template:
+    src: wp-config.php.j2
+    dest: /var/www/html/wp-config.php
+
+- name: Recursively change ownership of a directory
+  file:
+    path: /var/www/html
+    recurse: yes
+    owner: apache
+    group: apache
