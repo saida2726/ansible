@@ -9,7 +9,7 @@
     dest: /tmp/
     remote_src: yes
 
-- name: Move WordPress files
+- name: Move WordPress
   shell: "mv /tmp/wordpress/* /var/www/html/"
   args:
     creates: /var/www/html/index.php
