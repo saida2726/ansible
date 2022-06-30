@@ -1,9 +1,22 @@
-# Disable SELinux
+- name: Install unzip
+  yum:
+    name: unzip
+    state: latest
 
-# Download Wordpress from https://wordpress.org/latest.zip
+- name: Unarchive a file that needs to be downloaded (added in 2.0)
+  unarchive:
+    src: https://wordpress.org/latest.zip
+    dest: /tmp/
+    remote_src: yes
 
-# Unarchive
+- name: Move WordPress files
+  shell: "mv /tmp/wordpress/* /var/www/html/"
+  args:
+    creates: /var/www/html/index.php
 
-# Put at /var/www/html
-
-# Fix file permissions (owner: apache, group apache)
+- name: Recursively change ownership of a directory
+  file:
+    path: /var/www/html
+    recurse: yes
+    owner: apache
+    group: apache

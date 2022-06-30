@@ -8,6 +8,10 @@
       state: restarted
       enabled: yes
   tasks:
+  - name: Disable SELinux
+    selinux:
+      state: disabled
+
   - name: Include Apache
     include: apache.yml
 
