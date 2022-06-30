@@ -1,6 +1,6 @@
 Ansible-Role-PHP
 =========
-This is a simple role which installs PHP 7.2/7.3/7.4
+This is a simple role which installs PHP 7.0/7.1/7.2/7.3
 
 Requirements
 ------------
